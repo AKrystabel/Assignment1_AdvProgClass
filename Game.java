@@ -42,12 +42,14 @@ public class Game {
         if(input_play == 1){
             do{
                 // start by asking what die the user wants to use to roll the number
+                // it will then calculate the user score by adding the returned value 
+                // from the method to the current user score
                 System.out.println("User 1, which die would you like to use? (1 or 2): ");
-                user1_score = user_scoring(die1,die2,die_reader,user1_score,rolled_number);
+                user1_score = user1_score + user_scoring(die1,die2,die_reader,rolled_number);
                 System.out.println("Added to User 1 Account");
 
                 System.out.println("User 2, which die would you like to use? (1 or 2): ");
-                user2_score = user_scoring(die1,die2,die_reader,user2_score,rolled_number);
+                user2_score = user2_score + user_scoring(die1,die2,die_reader,rolled_number);
                 System.out.println("Added to User 2 Account");
 
                 // checking if the user still wants to play the game, input_play will be updated based on the input
@@ -76,19 +78,16 @@ public class Game {
     // method creation to roll the die, takes in Die object1 and Die object2, the die_reader which
     // is based on user input (hence why we are using scanner), the user's score, and the rolled number.
     // takes into account the die used (either die1 or die2) and stores the rolled number by the die 
-    // to rolled_number. This will then be added to the user_score
-    // method returns the user_score (user1 or user2 score depending on the argument given)
-    public static int user_scoring(Die d1, Die d2, int die_reader, int user_score, int rolled_number){
+    // to rolled_number, in which will then be returned from this method.
+    public static int user_scoring(Die d1, Die d2, int die_reader, int rolled_number){
         die_reader = scanner.nextInt();
         if (die_reader == 1){
            rolled_number = d1.throw_die();
-           user_score = user_score+rolled_number;
         }else{
             rolled_number = d2.throw_die();
-            user_score = user_score + rolled_number;
         }
         System.out.println("The rolled number is: " + rolled_number);
-        return user_score;
+        return rolled_number;
     
     }
     
