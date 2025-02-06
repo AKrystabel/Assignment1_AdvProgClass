@@ -9,13 +9,15 @@
  */
 public class Die {
     
+    // making the dValue to be private, ensuring integrity
     private int dValue;
     
-    
+    // initialize the dValue to be 0
     public Die(){
         this.dValue = 0;
     }
     
+    // accessor to get the dValue as it was set to be private
     public int getDValue(){
         return this.dValue;
     }
@@ -33,6 +35,7 @@ public class Die {
             //otherwise, rolled value will be as per randomized number generated
             this.dValue = rolled;
         }
+        // the method will then return the dValue
         return this.dValue;
     }
     
